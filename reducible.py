@@ -137,6 +137,8 @@ def get_longest_words(string_list):
     post: Returns a list of words in string_list that have the maximum length.
     """
     lengths = []
+    if string_list==[]:
+        return string_list
     for string in string_list:
         lengths.append(len(string))
     longest = max(lengths)
@@ -156,11 +158,12 @@ def main():
     # where each line read from input()
     # should be a single word. Append to word_list
     # ensure each word has no trailing white space.
-    while True:
-        string = input().strip()
-        if not string:
-            break
-        word_list.append(string)
+    try:
+        while True:
+            string = input().strip()
+            word_list.append(string)
+    except EOFError:
+        pass
     # find length of word_list
     x = len(word_list)
     # determine prime number N that is greater than twice
